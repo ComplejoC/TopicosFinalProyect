@@ -12,3 +12,9 @@ https://richpauloo.github.io/2018-05-16-Installing-the-R-kernel-in-Jupyter-Lab/
 
 How to use MIAmaxent
 https://github.com/julienvollering/MIAmaxent#miamaxent
+
+How to use raster for making spacial distribution models
+https://www.rspatial.org/sdm/index.html
+
+Dplyr Manual
+https://dplyr.tidyverse.org
