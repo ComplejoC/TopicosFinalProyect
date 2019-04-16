@@ -9,3 +9,6 @@ https://opensource.com/article/18/2/how-clone-modify-add-delete-git-files
 
 How to install the R Kernel in to Jupyter
 https://richpauloo.github.io/2018-05-16-Installing-the-R-kernel-in-Jupyter-Lab/
+
+How to use MIAmaxent
+https://github.com/julienvollering/MIAmaxent#miamaxent
