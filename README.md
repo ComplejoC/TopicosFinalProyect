@@ -1,5 +1,5 @@
 # TopicosFinalProyect
-## Usefull tutorials:
+## Useful tutorials:
 
 #### How to add folders and files in to the proyect
 https://coderwall.com/p/2hnbua/how-to-add-an-existing-folder-on-your-computer-to-a-new-git-repo
@@ -22,3 +22,8 @@ https://www.rspatial.org/sdm/index.html
 
 #### Dplyr Manual
 https://dplyr.tidyverse.org
+
+#### Raster and WorldClim Data
+https://www.benjaminbell.co.uk/2018/01/extracting-data-and-making-climate-maps.html
+
+https://cran.r-project.org/web/packages/raster/vignettes/Raster.pdf
