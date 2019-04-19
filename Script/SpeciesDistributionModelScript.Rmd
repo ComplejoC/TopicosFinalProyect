@@ -1,0 +1,38 @@
+---
+title: "Lasioglossum Of Puerto Rico And the Carebbean Species Distribution Model"
+author: "Maylin Caldwell, Sofía Meléndez Cartagena"
+date: "4/13/2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Set WorkingDirectory
+```{r}
+# setwd("~/TopicosFinalProyect") This will vary by computer
+```
+
+
+## Required Libraries
+```{r}
+library(tidyverse)
+```
+
+## Document imports
+```{r}
+dat <- read_csv("../data/BeeData.csv")
+
+```
+
+## Build funtions if needed
+### Use one code block per function
+```{r}
+
+```
+
+## Variable calls
+### It's a good practice to have your variables groupd together in blocks if they are meant to be used together. 
+
+## Main Body of Code
