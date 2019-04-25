@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Set WorkingDirectory
 ```{r}
-# setwd("~/TopicosFinalProyect") This will vary by computer
+# setwd("~/../TopicosFinalProyect") This will vary by computer
 ```
 
 
@@ -41,7 +41,42 @@ Hexa2Deci <- function(degree,min,sec){
 
 ## Variable calls
 ### It's a good practice to have your variables groupd together in blocks if they are meant to be used together. 
+```{r}
+latitud <- dat$Latitud
+longitud <- dat$Longitud
+corX <- c("DX","MX","SX")
+cory <- c("DY","MY","SY")
+```
 
 ## Main Body of Code
 
 ### Data Clean up
+
+Use gsub to clean the special characters from latitud and longitud vectors. Save to LongitudClean and LatitudClean.
+
+```{r}
+NoSpecialDat <- dat %>%
+    mutate(Latitud = LatitudClean, Longitud = LongitudClean) %>%
+    str
+```
+Spread the latitude and longitude columms in to columms that represent Degrees, Minutes, and Seconds
+
+```{r}
+SeperatedDat <- NoSpecialDat %>%
+    separate(Latitud,corX,sep = "[.]") %>% 
+    separate(Longitud,cory,sep = "[.]") %>% 
+    str
+```
+Convert To interger
+```{r}
+IntDat <- SeperatedDat %>%
+	mutate(DX = as.integer(DX), MX = as.integer(MX), SX = as.integer(SX)) %>%
+	mutate(DY = as.integer(DY), MY = as.integer(MY), SY = as.integer(SY)) %>%
+	str 
+```
+Connvert do Decadecimal
+
+```{r}
+latitud <- Hexa2Deci(SeperatedDat$DX,SeperatedDat$MX,SeperatedDat$SX)
+longitud <- Hexa2Deci(SeperatedDat$DY,SeperatedDat$MY,SeperatedDat$SY)
+```
