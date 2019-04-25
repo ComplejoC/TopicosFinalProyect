@@ -9,6 +9,16 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Introduction
+## What is this?
+	Well this is the script for our BigData course! We plan on doing a species distribution model to determian the habitat suitability value for the genus Lasioglossum in Puerto Rico as well as adjecent Islands in the Caribbean.
+## What should I now to get it done?
+	I suggest reading and maybe working on these tutorials before getting started with the data:
+	> https://rspatial.org/index.html
+	> https://cengel.github.io/R-data-wrangling/
+
+# Get to coding
+
 ## Set WorkingDirectory
 ```{r}
 # setwd("~/../TopicosFinalProyect") This will vary by computer
@@ -32,7 +42,7 @@ dat <- read_csv("../data/BeeData.csv", stringsAsFactors = FALSE)
 ## Build funtions if needed
 ### Use one code block per function
 
-Function to Transform Hexadecimal Coordinates to Decimal
+	Function to Transform Hexadecimal Coordinates to Decimal
 ```{r}
 Hexa2Deci <- function(degree,min,sec){
     degree + (min/60) + (sec/3600) 
@@ -52,7 +62,7 @@ cory <- c("DY","MY","SY") # Holds Titles for spread longitud
 
 ### Data Clean up
 
-Use gsub to clean the special characters from latitud and longitud vectors. Save to LongitudClean and LatitudClean. Proper gsub usage goes as following
+	Use gsub to clean the special characters from latitud and longitud vectors. Save to LongitudClean and LatitudClean. Proper gsub usage goes as following
 ```{r}
 # Don't run this
 subVec <- gsub("Pattern","Substitute",Vector)
@@ -63,22 +73,24 @@ NoSpecialDat <- dat %>%
     mutate(Latitud = LatitudClean, Longitud = LongitudClean) %>%
     str
 ```
-Spread the latitude and longitude columms in to columms that represent Degrees, Minutes, and Seconds
 
+	Spread the latitude and longitude columms in to columms that represent Degrees, Minutes, and Seconds
 ```{r}
 SeperatedDat <- NoSpecialDat %>%
     separate(Latitud,corX,sep = "[.]") %>% 
     separate(Longitud,cory,sep = "[.]") %>% 
     str
 ```
-Convert To interger
+
+	Convert To interger
 ```{r}
 IntDat <- SeperatedDat %>%
 	mutate(DX = as.integer(DX), MX = as.integer(MX), SX = as.integer(SX)) %>%
 	mutate(DY = as.integer(DY), MY = as.integer(MY), SY = as.integer(SY)) %>%
 	str 
 ```
-NAs will probably show up here. We should be mindfull of the original data and use it to replace the missing values. The proper steps to verify this is
+
+	NAs will probably show up here. We should be mindfull of the original data and use it to replace the missing values. The proper steps to verify this is
 ```{r}
 #Don't run this
 holder <- is.na(dataframe)
@@ -86,16 +98,19 @@ dataframe[holder] #allows you to view all the NAs
 which(dataframe[holder]) #tells you the posicion within the dataframe of the NAs decide what to do from here on out
 ```
 
-Connvert do Decadecimal
-
+	Connvert do Decadecimal
 ```{r}
 latitud <- Hexa2Deci(IntDat$DX,IntDat$MX,IntDat$SX)
 longitud <- Hexa2Deci(IntDat$DY,IntDat$MY,IntDat$SY)
 ```
-Make a DataFrame to hold your new coodinates based on our original dat. Then imput the new coordinates in to the data frame
 
+	Make a DataFrame to hold your new coodinates based on our original dat. Then imput the new coordinates in to 	the data frame
 ```{r}
 TransDat <- dat
 AbejaTrans$Latitud <- latitud 
 AbejaTrans$Longitud <- longitud
 ```
+
+	Our clean up is done! Or at least at the GPS level it is. Now we need to start working on the geografical data no directly related to our original data set. Depending on the model, one might need to clear backgroung or pseudo absence data. For now, we want to use a model that doesn't do that. But if we did, this is the part of the script it would go in.
+
+### Enviromental Data A.K.A Let's Raster
