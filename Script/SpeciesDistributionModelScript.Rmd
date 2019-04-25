@@ -42,17 +42,21 @@ Hexa2Deci <- function(degree,min,sec){
 ## Variable calls
 ### It's a good practice to have your variables groupd together in blocks if they are meant to be used together. 
 ```{r}
-latitud <- dat$Latitud
-longitud <- dat$Longitud
-corX <- c("DX","MX","SX")
-cory <- c("DY","MY","SY")
+latitud <- dat$Latitud #Vector for manipulating latitud col
+longitud <- dat$Longitud # Vector for manipulatin longitud col
+corX <- c("DX","MX","SX") # Holds Titles for spread latitud
+cory <- c("DY","MY","SY") # Holds Titles for spread longitud
 ```
 
 ## Main Body of Code
 
 ### Data Clean up
 
-Use gsub to clean the special characters from latitud and longitud vectors. Save to LongitudClean and LatitudClean.
+Use gsub to clean the special characters from latitud and longitud vectors. Save to LongitudClean and LatitudClean. Proper gsub usage goes as following
+```{r}
+# Don't run this
+subVec <- gsub("Pattern","Substitute",Vector)
+```
 
 ```{r}
 NoSpecialDat <- dat %>%
@@ -74,9 +78,24 @@ IntDat <- SeperatedDat %>%
 	mutate(DY = as.integer(DY), MY = as.integer(MY), SY = as.integer(SY)) %>%
 	str 
 ```
+NAs will probably show up here. We should be mindfull of the original data and use it to replace the missing values. The proper steps to verify this is
+```{r}
+#Don't run this
+holder <- is.na(dataframe)
+dataframe[holder] #allows you to view all the NAs
+which(dataframe[holder]) #tells you the posicion within the dataframe of the NAs decide what to do from here on out
+```
+
 Connvert do Decadecimal
 
 ```{r}
-latitud <- Hexa2Deci(SeperatedDat$DX,SeperatedDat$MX,SeperatedDat$SX)
-longitud <- Hexa2Deci(SeperatedDat$DY,SeperatedDat$MY,SeperatedDat$SY)
+latitud <- Hexa2Deci(IntDat$DX,IntDat$MX,IntDat$SX)
+longitud <- Hexa2Deci(IntDat$DY,IntDat$MY,IntDat$SY)
+```
+Make a DataFrame to hold your new coodinates based on our original dat. Then imput the new coordinates in to the data frame
+
+```{r}
+TransDat <- dat
+AbejaTrans$Latitud <- latitud 
+AbejaTrans$Longitud <- longitud
 ```
