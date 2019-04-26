@@ -16,6 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 	I suggest reading and maybe working on these tutorials before getting started with the data:
 	> https://rspatial.org/index.html
 	> https://cengel.github.io/R-data-wrangling/
+## An explanation on our required libraries [I will fill this out later]
 
 # Get to coding
 
@@ -114,3 +115,7 @@ AbejaTrans$Longitud <- longitud
 	Our clean up is done! Or at least at the GPS level it is. Now we need to start working on the geografical data no directly related to our original data set. Depending on the model, one might need to clear backgroung or pseudo absence data. For now, we want to use a model that doesn't do that. But if we did, this is the part of the script it would go in.
 
 ### Enviromental Data A.K.A Let's Raster
+
+### Modeling Fitting and Predictions
+
+### Evaluation
