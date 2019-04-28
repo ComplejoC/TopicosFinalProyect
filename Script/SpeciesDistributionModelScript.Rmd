@@ -112,10 +112,17 @@ AbejaTrans$Latitud <- latitud
 AbejaTrans$Longitud <- longitud
 ```
 
+	Subset the data frame so we only keep the species and the coordinates.
+```{r}
+CleanDF <- AbejaTrans[,2:4]
+
+```
+
 	Our clean up is done! Or at least at the GPS level it is. Now we need to start working on the geografical data no directly related to our original data set. Depending on the model, one might need to clear backgroung or pseudo absence data. For now, we want to use a model that doesn't do that. But if we did, this is the part of the script it would go in.
 
 ### Enviromental Data A.K.A Let's Raster
 
+	Remember that when representing coordinates in an [x,y] plane, x = longitude and y = latitude
 ### Modeling Fitting and Predictions
 
 ### Evaluation
