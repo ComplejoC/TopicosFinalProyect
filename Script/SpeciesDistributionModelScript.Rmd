@@ -29,9 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Required Libraries
 ```{r}
 library(tidyverse)
-library(sdm)
-library(raster)
-library(rgdal)
+library(wallace)
 ```
 
 ## Document imports
@@ -109,7 +107,7 @@ longitud <- Hexa2Deci(IntDat$DY,IntDat$MY,IntDat$SY)
 ```{r}
 TransDat <- dat
 AbejaTrans$Latitud <- latitud 
-AbejaTrans$Longitud <- longitud
+AbejaTrans$Longitud <- -1*longitud
 ```
 
 	Subset the data frame so we only keep the species and the coordinates.
@@ -118,11 +116,10 @@ CleanDF <- AbejaTrans[,2:4]
 
 ```
 
-	Our clean up is done! Or at least at the GPS level it is. Now we need to start working on the geografical data no directly related to our original data set. Depending on the model, one might need to clear backgroung or pseudo absence data. For now, we want to use a model that doesn't do that. But if we did, this is the part of the script it would go in.
+	Save data in to a CSV for future convinience
+```{r}
+write.csv(CleanDF, file = "abejaLimpia.csv")
+```
 
-### Enviromental Data A.K.A Let's Raster
-
-	Remember that when representing coordinates in an [x,y] plane, x = longitude and y = latitude
-### Modeling Fitting and Predictions
-
-### Evaluation
+	
+	Now that out data is clean, let's run out species distribution app and follow it's workflow. Let's not forget export the code by the end of it all. 
