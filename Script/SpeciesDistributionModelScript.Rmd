@@ -123,3 +123,6 @@ write.csv(CleanDF, file = "abejaLimpia.csv")
 
 	
 	Now that out data is clean, let's run out species distribution app and follow it's workflow. Let's not forget export the code by the end of it all. 
+```{r}
+run_wallace()
+```
