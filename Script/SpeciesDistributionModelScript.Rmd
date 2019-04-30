@@ -34,7 +34,7 @@ library(wallace)
 
 ## Document imports
 ```{r}
-dat <- read_csv("../data/BeeData.csv", stringsAsFactors = FALSE)
+dat <- read_csv("../Data/BeeData4Real.csv")
 
 ```
 
